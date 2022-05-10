@@ -11,7 +11,7 @@ Complexo::Complexo() {
 
 Complexo::Complexo(double a, double b) {
   real_ = sqrt(a*a + b*b);
-  imag_ = atan(b/a);
+  imag_ = atan2(b, a);
 }
 
 double Complexo::real() {
