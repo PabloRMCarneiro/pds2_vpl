@@ -26,9 +26,5 @@ int main () {
   auto r = ComputarRaizes(a, b, c);
   cout << "(" << r.first.real() << ", " << r.first.imag() << ")" << " "
        << "(" << r.second.real() << ", " << r.second.imag() << ")" << endl;
-  cout << "(" << r.first.simetrico().real() << ", " << r.first.simetrico().imag() << ")" << " "
-       << "(" << r.second.conjugado().real() << ", " << r.second.conjugado().imag() << ")" << endl;
-  cout << "(" << r.first.inverso().real() << ", " << r.first.inverso().imag() << ")" << " "
-       << "(" << r.second.somar(r.first).real() << ", " << r.second.somar(r.first).imag() << ")" << endl;
   return 0;
 }
