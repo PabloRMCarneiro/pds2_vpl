@@ -11,55 +11,55 @@ Complexo::Complexo() {
 
 Complexo::Complexo(double a, double b) {
   real_ = sqrt(a*a + b*b);
-  imag_ = atan2(b, a);
+  imag_ = atan2(b,a);
 }
 
 double Complexo::real() {
-  return real_;
+  return real_*cos(imag_);
 }
 
 double Complexo::imag() {
-  return imag_;
+  return real_*sin(imag_);
 }
 
 bool Complexo::igual(Complexo x) {
-  return (x.real() == real() && x.imag() == imag());
+  return (x.real_ == real_ && x.imag_ == imag_);
 }
 
 void Complexo::Atribuir(Complexo x) {
-  x.real_ = real(); // real_ = x.real();
-  x.imag_ = imag(); //o complexo que está chamando a função é atribuido ao que é passado como argumento;  imag_ = x.imag(); - o complexo que está passado como argumento é atribuido ao que está chamando a função.
+  x.real_ = real_; 
+  x.imag_ = imag_; 
 }
 
 double Complexo::modulo() {
-  return real();
+  return real_;
 }
 
 Complexo Complexo::conjugado() {
   Complexo c;
-  c.real_ = real();
-  c.imag_ = -imag();
+  c.real_ = real_;
+  c.imag_ = -imag_;
   return c;
 }
 
 Complexo Complexo::simetrico() {
   Complexo c;
-  c.real_ = -real();
-  c.imag_ = -imag();
+  c.real_ = -real_;
+  c.imag_ = -imag_;
   return c;
 }
 
 Complexo Complexo::inverso() {
   Complexo i;
-  i.real_ = 1.0/real();
-  i.imag_ = -imag();
+  i.real_ = 1.0/real_;
+  i.imag_ = -imag_;
   return i;
 }
 
 Complexo Complexo::somar(Complexo y) {
   Complexo s;
-  s.real_ = real()*cos(imag()) - y.real()*cos(y.imag());
-  s.imag_ = real()*sin(imag()) - y.real()*sin(y.imag());
+  s.real_ = real_*cos(imag_) - y.real_*cos(y.imag_);
+  s.imag_ = real_*sin(imag_) - y.real_*sin(y.imag_);
   return s;
 }
 
