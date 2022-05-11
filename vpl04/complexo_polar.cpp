@@ -65,21 +65,21 @@ Complexo Complexo::somar(Complexo y) {
 
 Complexo Complexo::subtrair(Complexo y) {
   Complexo s;
-  s.real_ = real()*cos(imag()) + y.real()*cos(y.imag());
-  s.imag_ = real()*sin(imag()) + y.real()*sin(y.imag());
+  s.real_ = real_*cos(imag_) + y.real_*cos(y.imag_);
+  s.imag_ = real_*sin(imag_) + y.real_*sin(y.imag_);
   return s;
 }
 
 Complexo Complexo::multiplicar(Complexo y) {
   Complexo p;
-  p.real_ = real()*y.real();
-  p.imag_ = imag() + y.imag();
+  p.real_ = real_*y.real_;
+  p.imag_ = imag_ + y.imag_;
   return p;
 }
 
 Complexo Complexo::dividir(Complexo y) {
   Complexo d;
-  d.real_ = real()/y.real();
-  d.imag_ = imag() - y.imag();  
+  d.real_ = real_/y.real_;
+  d.imag_ = imag_ - y.imag_;  
   return d;
 }
