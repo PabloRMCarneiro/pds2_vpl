@@ -1,6 +1,5 @@
-#include <string>
-
 #include "Estoque.hpp"
+
 
 void Estoque::add_mercadoria(const std::string& mercadoria, unsigned int qtd) {
   estoque.find(mercadoria) == estoque.end() ? estoque[mercadoria] = qtd : estoque[mercadoria] += qtd;
@@ -22,10 +21,9 @@ unsigned int Estoque::get_qtd(const std::string& mercadoria) const {
 }
 
 void Estoque::imprime_estoque() const {
-  std::map<std::string, unsigned int>::const_iterator it = estoque.begin()++;
-  while(it != estoque.end()) {
+  std::map<std::string, unsigned int>::const_iterator it;
+  for (auto it = estoque.begin(); it != estoque.end(); it++) {
     std::cout << it->first << ", " << it->second << std::endl;
-    it++;
   }
 }
 
@@ -48,22 +46,50 @@ Estoque& Estoque::operator -= (const Estoque& rhs) {
 
 bool operator < (Estoque& lhs, Estoque& rhs) {
 
-    std::map<std::string, unsigned int>::const_iterator it;
-    for (it = lhs.estoque.begin(); it != lhs.estoque.end(); it++) {
-      if (rhs.get_qtd(it->first) < it->second) {
-        return false;
-      }
+    int SameGoods = 0;
+    int aux = 0;
+    std::map<std::string, unsigned int>::const_iterator it_lhs;
+    std::map<std::string, unsigned int>::const_iterator it_rhs;
+    for (it_lhs = lhs.estoque.begin(); it_lhs != lhs.estoque.end(); it_lhs++) {
+        for (it_rhs = rhs.estoque.begin(); it_rhs != rhs.estoque.end(); it_rhs++) {
+          if(it_rhs->first == it_lhs->first){
+            SameGoods++;
+            if (it_rhs->second > it_lhs->second) aux++;
+          }
+        }
     }
-    return true;
+    if(SameGoods != lhs.estoque.size()){
+      return false;
+    }
+    else if(aux == SameGoods){
+      return true;
+    } else {
+      return false;
+    }
 }
 
 bool operator > (Estoque& lhs, Estoque& rhs) {
 
-    std::map<std::string, unsigned int>::const_iterator it;
-    for (it = lhs.estoque.begin(); it != lhs.estoque.end(); it++) {
-      if (rhs.get_qtd(it->first) > it->second) {
-        return false;
-      }
+    int SameGoods = 0;
+    int aux = 0;
+
+    std::map<std::string, unsigned int>::const_iterator it_lhs;
+    std::map<std::string, unsigned int>::const_iterator it_rhs;
+
+    for (it_lhs = lhs.estoque.begin(); it_lhs != lhs.estoque.end(); it_lhs++) {
+        for (it_rhs = rhs.estoque.begin(); it_rhs != rhs.estoque.end(); it_rhs++) {
+          if(it_rhs->first == it_lhs->first){
+            SameGoods++;
+            if (it_rhs->second < it_lhs->second) aux++;
+          }
+        }
     }
-    return true;
+    if(SameGoods != rhs.estoque.size()){
+      return false;
+    }
+    else if(aux == SameGoods){
+      return true;
+    } else {
+      return false;
+    }
 }

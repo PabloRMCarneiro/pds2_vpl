@@ -4,6 +4,8 @@
 #include <map>
 #include <string>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 
 /**
  * \details  Este arquivo eh parte de um VPL de PDS II

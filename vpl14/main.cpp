@@ -54,7 +54,7 @@ void test_gt0() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 5);
-  std::cout << (e0 > e1) << std::endl;
+  std::cout << int(e0 > e1) << std::endl;
 }
 
 void test_gt1() {
@@ -64,7 +64,7 @@ void test_gt1() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 5);
-  std::cout << (e0 > e1) << std::endl;
+  std::cout << int(e0 > e1) << std::endl;
 }
 
 void test_gt2() {
@@ -75,7 +75,7 @@ void test_gt2() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 15);
-  std::cout << (e0 > e1) << std::endl;
+  std::cout << int(e0 > e1) << std::endl;
 }
 
 void test_lt0() {
@@ -86,7 +86,7 @@ void test_lt0() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 5);
-  std::cout << (e1 < e0) << std::endl;
+  std::cout << int(e1 < e0) << std::endl;
 }
 
 void test_lt1() {
@@ -96,7 +96,7 @@ void test_lt1() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 5);
-  std::cout << (e1 < e0) << std::endl;
+  std::cout << int(e1 < e0) << std::endl;
 }
 
 void test_lt2() {
@@ -107,7 +107,7 @@ void test_lt2() {
   Estoque e1;
   e1.add_mercadoria("trigo", 20);
   e1.add_mercadoria("leite", 15);
-  std::cout << (e1 < e0) << std::endl;
+  std::cout << int(e1 < e0) << std::endl;
 }
 
 void test_add() {
@@ -175,14 +175,14 @@ void test_read_gt() {
   Estoque e1;
   std::string mercadoria;
   unsigned int qtd;
-  while (std::cin >> mercadoria) {
+  std::cin >> mercadoria;
     std::cin >> qtd;
     e0.add_mercadoria(mercadoria, qtd);
     std::cin >> mercadoria;
     std::cin >> qtd;
     e1.add_mercadoria(mercadoria, qtd);
-  }
-  std::cout << (e0 > e1) << std::endl;
+  
+  std::cout << int(e0 > e1) << std::endl;
 }
 
 int main() {
