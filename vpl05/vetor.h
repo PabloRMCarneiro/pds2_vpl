@@ -3,7 +3,21 @@
 
 #include <string>
 
+
 using namespace std;
+
+struct ExcecaoIntervaloInvalido{
+  int inicio;
+  int fim;
+};
+struct ExcecaoIndiceForaDoIntervalo{
+  int inicio;
+  int fim;
+  int indice;
+};
+struct ExcecaoIndiceNaoInicializado{
+  int indice;
+};
 
 // Define um vetor de std::string cujos índices variam em
 // qualquer intervalo, inclusive negativos.
@@ -28,8 +42,9 @@ class Vetor {
   
   private:
     int inicio_;  // Primeiro índice válido do vetor.
-    int size_;
+    int fim_;
     std::string* elementos_;  // Elementos do vetor.
+    bool* inicializado_;
 };
 
 #endif
